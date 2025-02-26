@@ -51,7 +51,10 @@ int	chek(t_node **stack_a, t_node **stack_b)
 		if (!get)
 			break ;
 		if (do_get(get, stack_a, stack_b))
+		{
+			get_next_line(-1);
 			return (free(get), 1);
+		}
 		free(get);
 	}
 	if (sorted(*stack_a) && !(*stack_b))

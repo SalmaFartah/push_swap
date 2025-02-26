@@ -41,26 +41,24 @@ int	do_get(char *get, t_node **stack_a, t_node **stack_b)
 	return (0);
 }
 
-void	chek(t_node **stack_a, t_node **stack_b)
+int	chek(t_node **stack_a, t_node **stack_b)
 {
 	char	*get;
 
 	while (1)
 	{
 		get = get_next_line(0);
-		if (get == NULL)
+		if (!get)
 			break ;
 		if (do_get(get, stack_a, stack_b))
-		{
-			free(get);
-			exit(1);
-		}
+			return (free(get), 1);
 		free(get);
 	}
 	if (sorted(*stack_a) && !(*stack_b))
 		write(1, "OK\n", 3);
 	else if (!sorted(*stack_a) || *stack_b)
 		write(1, "KO\n", 3);
+	return (0);
 }
 
 int	main(int ac, char *av[])
@@ -86,6 +84,7 @@ int	main(int ac, char *av[])
 		return (0);
 	if (check_errors(join, stack_a) == 1)
 		return (free_stack(stack_a), free(join), 1);
-	chek(&stack_a, &stack_b);
+	if (chek(&stack_a, &stack_b))
+		return(free_stack(stack_a), free_stack(stack_b), free(join), 1);
 	return (free_stack(stack_a), free_stack(stack_b), free(join), 0);
 }

@@ -64,7 +64,7 @@ t_node	*str_to_list(char *s, int *l)
 	{
 		new = lstnew(ft_atoi(sp[i], l));
 		if (!new || *l)
-			return (free_stack(head), free(sp), NULL);
+			return (free_stack(head), free(new), ft_free(sp), NULL);
 		ft_lstadd_back(&head, new);
 		i++;
 	}

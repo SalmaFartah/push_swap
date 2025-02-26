@@ -24,7 +24,7 @@ typedef struct s_node
 	struct s_node	*next;
 }					t_node;
 
-void		chek(t_node **stack, t_node **helper);
+int		chek(t_node **stack, t_node **helper);
 void		swap(t_node *stack);
 void		ss(t_node *stack_a, t_node *stack_b);
 void		push(t_node **stack1, t_node **stack2);

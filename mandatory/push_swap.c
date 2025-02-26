@@ -30,7 +30,7 @@ int	main(int ac, char *av[])
 		return (0);
 	stack_a = str_to_list(join, &l);
 	if (l)
-		return (1);
+		return (free(join), 1);
 	if (!stack_a)
 		return (0);
 	if (check_errors(join, stack_a))

@@ -67,7 +67,8 @@ char	*get_next_line(int fd)
 	rdbuff = malloc(BUFFER_SIZE + 1);
 	if (!rdbuff)
 		return (free(bf), bf = NULL, NULL);
-	(!bf) && (bf = ft_strdup(""));
+	if (!bf)
+		bf = ft_strdup("");
 	k = 1;
 	while (!ft_strchr(bf, '\n') && k > 0)
 	{
